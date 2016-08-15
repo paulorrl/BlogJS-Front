@@ -1,0 +1,19 @@
+<form class="well">
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input ng-model="usuario.nome" type="text" class="form-control" id="nome" placeholder="Digite seu nome">
+  </div>
+
+  <div class="form-group">
+    <label for="login">Login</label>
+    <input ng-model="usuario.login" type="text" class="form-control" id="login" placeholder="Digite um login">
+  </div>
+
+  <div class="form-group">
+    <label for="senha">Senha</label>
+    <input ng-model="usuario.senha" type="password" class="form-control" id="senha" placeholder="Digite sua senha">
+  </div>
+
+  <button type="reset" class="btn btn-default">Limpar</button>
+  <button ng-click="cadastrar(usuario)" class="btn btn-primary">Cadastrar</button>
+</form>

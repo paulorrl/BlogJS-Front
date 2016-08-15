@@ -1,0 +1,23 @@
+{
+  "name": "blogjs-web",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Paulo Rodrigues"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#1.5.x",
+    "angular-bootstrap": "^2.0.1",
+    "angular-route": "^1.5.8"
+  }
+}
