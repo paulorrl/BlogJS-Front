@@ -1,0 +1,14 @@
+<form class="well">
+    <div class="form-group">
+        <label for="titulo">Titulo</label>
+        <input type="text" class="form-control" id="titulo" placeholder="Digite um título" ng-model="post.titulo">
+    </div>
+
+    <div class="form-group">
+        <label for="conteudo">Conteúdo</label>
+        <textarea id="conteudo" class="form-control" placeholder="Insira aqui o conteúdo" ng-model="post.conteudo"></textarea>
+    </div>
+
+    <button type="reset" class="btn btn-default">Limpar</button>
+    <button class="btn btn-primary" ng-click="registrar(post)">Registrar</button>
+</form>
