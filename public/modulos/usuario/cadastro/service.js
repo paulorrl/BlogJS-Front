@@ -1,24 +1,12 @@
-angular.module('blogjs.usuario').factory('usuarios', function() {
+angular.module('blogjs.usuario').factory('usuarios', function($http) {
 
     var cadastrar = function(usuario) {
-        var id = getId();
-        usuario.id = id + 1;
-        setId(usuario.id);
-
-        var usuarios = getUsuarios();
-        usuarios.push(usuario);
-        setUsuarios(usuarios);
+        return $http.post('http://localhost:9000/v1/usuarios', usuario)
     };
 
-    var autenticar = function(usuario) {
-        var encontrado = getUsuarios().find(function(obj) {
-            return obj.login === usuario.login && obj.senha === usuario.senha;
-        });
-
-        if (encontrado) {
-            localStorage.setItem('usuarioLogado', JSON.stringify(encontrado));
-        }
-        return encontrado;
+    var autenticar = function(login, senha) {
+        var auth = { login:login, senha:senha };
+        return $http.post('http://localhost:9000/v1/usuarios/auth', auth);
     };
 
     var getUsuarioLogado = function(){

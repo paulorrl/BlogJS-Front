@@ -3,8 +3,13 @@ angular.module('blogjs.usuario').controller('CadastroUsuarioController', functio
 
     $scope.cadastrar = function(usuario) {
         if (valido(usuario)) {
-            usuarios.cadastrar(usuario);
-            $location.path('login');
+            usuarios.cadastrar(usuario)
+                .then(function(resultado) {
+                    $location.path('login');
+                })
+                .catch(function(err) {
+                    alert('Não foi possível registrar!');
+                });
         } else {
             alert("Dados inválidos!");
         }
