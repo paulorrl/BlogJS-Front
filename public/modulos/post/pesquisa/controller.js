@@ -1,4 +1,4 @@
-angular.module('blogjs.post').controller('PesquisaPostController', function($scope, posts, $routeParams, usuarios) {
+angular.module('blogjs.post').controller('PesquisaPostController', function($scope, posts, $routeParams, usuarios, $location) {
 
     var carregarPosts = function()
     {
@@ -6,7 +6,13 @@ angular.module('blogjs.post').controller('PesquisaPostController', function($sco
     };
 
     var carregarUsuario = function() {
-        $scope.usuario = usuarios.buscar(parseInt($routeParams.id));
+        usuarios.buscar($routeParams.id)
+            .then(function(resultado) {
+                $scope.usuario = resultado.data;
+            })
+            .catch(function() {
+                $location.path('/login');
+            });
     };
 
     carregarPosts();

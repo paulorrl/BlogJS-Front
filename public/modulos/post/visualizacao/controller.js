@@ -6,7 +6,7 @@ angular.module('blogjs.post').controller('VisualizacaoPostController', function(
     };
 
     var carregarUsuario = function(){
-        return usuarios.buscar(parseInt($routeParams.id));
+        return usuarios.buscar($routeParams.id);
     };
 
     $scope.usuario = carregarUsuario();
