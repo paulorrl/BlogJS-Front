@@ -1,55 +1,14 @@
-angular.module('blogjs.post').factory('posts', function() {
-    var posts = [];
-    var id = 0;
-
-    var registrar = function(post) {
-        var novoId = getId() + 1;
-        post.id = novoId
-        setId(novoId);
-
-        var posts = getPosts();
-        post.dataRegistro = new Date();
-        posts.push(post);
-        setPosts(posts);
+angular.module('blogjs.post').factory('posts', function($http) {
+    var registrar = function(post, usuarioId) {
+        return $http.post('http://localhost:9000/v1/usuarios/' + usuarioId + '/posts/', post);
     };
 
-    var buscar = function(id){
-        var postEncontrado = getPosts().find(function(post) {
-            return post.id === id;
-        });
-        return postEncontrado;
+    var buscar = function(usuarioId, postId) {
+        return $http.get('http://localhost:9000/v1/usuarios/' + usuarioId + '/posts/' + postId);
     };
 
-    var listar = function() {
-        return getPosts();
-    };
-
-    var getId = function() {
-        var id = localStorage.getItem('currentPostId');
-
-        if (id) {
-            return parseInt(id);
-        } else {
-            return 0;
-        }
-    };
-
-    var setId = function(id) {
-        localStorage.setItem('currentPostId', id);
-    };
-
-    var getPosts = function(){
-        var dados = localStorage.getItem('posts');
-
-        if (dados) {
-            return JSON.parse(dados);
-        } else {
-            return [];
-        }
-    };
-
-    var setPosts = function(posts){
-        localStorage.setItem('posts', JSON.stringify(posts));
+    var listar = function(usuarioId) {
+        return $http.get('http://localhost:9000/v1/usuarios/' + usuarioId + '/posts');
     };
 
     return {

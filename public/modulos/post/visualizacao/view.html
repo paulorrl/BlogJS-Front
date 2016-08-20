@@ -1,9 +1,9 @@
 <div class="panel panel-primary">
     <div class="panel-heading" ng-bind="post.titulo"></div>
     <div class="panel-body" ng-bind="post.conteudo"></div>
-    <div class="panel-footer" ng-bind="post.dataRegistro | date: 'dd/MM/yyyy hh:mm:ss' "></div>
+    <div class="panel-footer" ng-bind="post.dataPostagem | date: 'dd/MM/yyyy hh:mm:ss' "></div>
     <div class="panel-footer">
-        <a href="#usuarios/{{ usuario.id }}/posts" class="btn btn-default">
+        <a href="#usuarios/{{ post.dono }}/posts" class="btn btn-default">
             Retornar para listagem
         </a>
     </div>

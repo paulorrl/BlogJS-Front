@@ -2,7 +2,13 @@ angular.module('blogjs.post').controller('RegistroPostController', function($sco
     $scope.post = {};
 
     $scope.registrar = function (post) {
-        posts.registrar(post);
-        $location.path('/usuarios/' + $routeParams.id + '/posts');
+        var usuarioId = $routeParams.id;
+        posts.registrar(post, usuarioId)
+            .then(function(resultado) {
+                $location.path('/usuarios/' + usuarioId + '/posts');
+            })
+            .catch(function(erro) {
+                alert(erro);
+            });
     };
 });
