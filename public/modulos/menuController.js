@@ -1,5 +1,4 @@
-angular.module('blogjs').controller('MenuController', function($scope, usuarios, $location){
-
+angular.module('blogjs').controller('MenuController', function($scope, usuarios, $location) {
     var carregarUsuario = function() {
         return usuarios.getUsuarioLogado();
     };

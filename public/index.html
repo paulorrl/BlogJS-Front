@@ -19,6 +19,12 @@
                     <a class="navbar-brand" href="#">BlogJS Web</a>
                 </div>
 
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#posts">Procurar posts</a>
+                    </li>
+                </ul>
+
                 <div class="collapse navbar-collapse" ng-controller="MenuController">
                     <ul class="nav navbar-nav" ng-hide="usuarioLogado">
                         <li>
@@ -53,13 +59,14 @@
          <script src="modulos/menuController.js"></script>
 
          <script src="modulos/usuario/modulo.js"></script>
-         <script src="modulos/usuario/cadastro/service.js"></script>
+         <script src="modulos/usuario/service.js"></script>
          <script src="modulos/usuario/cadastro/controller.js"></script>
          <script src="modulos/usuario/login/controller.js"></script>
 
          <script src="modulos/post/modulo.js"></script>
          <script src="modulos/post/pesquisa/controller.js"></script>
-         <script src="modulos/post/pesquisa/service.js"></script>
+         <script src="modulos/post/pesquisa_usuario/controller.js"></script>
+         <script src="modulos/post/service.js"></script>
          <script src="modulos/post/cadastro/controller.js"></script>
          <script src="modulos/post/visualizacao/controller.js"></script>
      </body>

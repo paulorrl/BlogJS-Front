@@ -1,5 +1,4 @@
 angular.module('blogjs.usuario').factory('usuarios', function($http) {
-
     var cadastrar = function(usuario) {
         return $http.post('http://localhost:9000/v1/usuarios', usuario)
     };
@@ -21,39 +20,11 @@ angular.module('blogjs.usuario').factory('usuarios', function($http) {
         localStorage.removeItem('usuarioLogado');
     };
 
-    var getId = function() {
-        var id = localStorage.getItem('currentId');
-
-        if (id) {
-            return parseInt(id);
-        } else {
-            return 0;
-        }
-    };
-
-    var setId = function(id) {
-        localStorage.setItem('currentId', id);
-    };
-
-    var getUsuarios = function(){
-        var dados = localStorage.getItem('usuarios');
-
-        if (dados) {
-            return JSON.parse(dados);
-        } else {
-            return [];
-        }
-    };
-
-    var setUsuarios = function(usuarios){
-        localStorage.setItem('usuarios', JSON.stringify(usuarios));
-    };
-
     return {
         cadastrar: cadastrar,
         autenticar: autenticar,
         buscar:buscar,
         getUsuarioLogado:getUsuarioLogado,
         sair:sair
-    }
+    };
 });

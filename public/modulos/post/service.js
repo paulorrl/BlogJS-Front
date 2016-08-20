@@ -3,17 +3,22 @@ angular.module('blogjs.post').factory('posts', function($http) {
         return $http.post('http://localhost:9000/v1/usuarios/' + usuarioId + '/posts/', post);
     };
 
-    var buscar = function(usuarioId, postId) {
+    var buscarPorUsuario = function(usuarioId, postId) {
         return $http.get('http://localhost:9000/v1/usuarios/' + usuarioId + '/posts/' + postId);
     };
 
-    var listar = function(usuarioId) {
+    var listarPorUsuario = function(usuarioId) {
         return $http.get('http://localhost:9000/v1/usuarios/' + usuarioId + '/posts');
+    };
+
+    var listarTodos = function() {
+        return $http.get('http://localhost:9000/v1/posts');
     };
 
     return {
         registrar:registrar,
-        listar: listar,
-        buscar:buscar
+        listarPorUsuario:listarPorUsuario,
+        buscarPorUsuario:buscarPorUsuario,
+        listarTodos:listarTodos
     };
 });
