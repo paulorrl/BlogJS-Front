@@ -1,10 +1,39 @@
 <div class="panel panel-primary">
     <div class="panel-heading" ng-bind="post.titulo"></div>
-    <div class="panel-body" ng-bind="post.conteudo"></div>
-    <div class="panel-footer" ng-bind="post.dataPostagem | date: 'dd/MM/yyyy hh:mm:ss' "></div>
+    <div class="panel-body">
+        <div class="col-sm-2" ng-bind="post.dataPostagem | date: 'dd/MM/yyyy hh:mm:ss'"></div> <br>
+        <div class="col-sm-12" ng-bind="post.conteudo"></div>
+    </div>
     <div class="panel-footer">
-        <a href="#usuarios/{{ post.dono }}/posts" class="btn btn-default">
-            Retornar para listagem
-        </a>
+        <div class="comentarios">
+            <div class="row" ng-repeat="com in post.comentarios track by $index">
+                <div>
+                    <b>{{com.usuario}}</b> comentou em <b>{{com.dataComentario | date: 'dd/MM/yyyy hh:mm:ss'}}:</b>
+                </div>
+                <div>
+                    {{com.conteudo}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input id="email" type="text" class="form-control" ng-model="comentario.email" placeholder="seuemail@aqui.com">
+        </div>
+        <div class="form-group">
+            <label for="comentario">Comentário</label>
+            <textarea id="comentario" ng-model="comentario.conteudo" class="form-control" placeholder="Digite seu comentário"></textarea>
+        </div>
+        <button ng-click="comentar(comentario)" class="btn btn-primary">Comentar</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2">
+        <a href="#/posts" class="btn btn-default">Retornar para listagem</a>
     </div>
 </div>

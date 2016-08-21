@@ -7,3 +7,15 @@ div.post-item:HOVER {
     cursor: pointer;
     background-color: #F0F8FF;
 }
+
+.comentarios {
+    padding: 15px;
+}
+
+.comentarios > .row {
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #CACACA;
+}

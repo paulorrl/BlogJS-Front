@@ -14,7 +14,14 @@ angular.module('blogjs.post', [])
                 templateUrl: 'modulos/post/cadastro/view.html'
             })
             .when('/usuarios/:id/posts/:postId', {
+                controller: 'VisualizacaoUsuarioPostController',
+                templateUrl: 'modulos/post/visualizacao_usuario/view.html'
+            })
+            .when('/posts/:postId', {
                 controller: 'VisualizacaoPostController',
                 templateUrl: 'modulos/post/visualizacao/view.html'
+            })
+            .otherwise({
+                redirectTo: '/posts'
             });
     });

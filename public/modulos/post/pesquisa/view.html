@@ -1,8 +1,21 @@
 <div class="panel panel-primary">
-    <div class="panel-heading">Todos os posts</div>
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-sm-4">
+                <label for="filtro">Qual assunto deseja pesquisar ...</label>
+                <input type="text" id="filtro" class="form-control" placeholder="Digite aqui ... "
+                       ng-model="filtro"
+                       ng-model-options="{ debounce: 500 }"
+                       ng-change="atualizarPosts();" autofocus>
+            </div>
+            <div class="col-sm-3">
+                <label>Total de publicações: {{totalPosts}}</label>
+            </div>
+        </div>
+    </div>
     <div class="panel-body">
         <div ng-repeat="post in posts">
-            <a ng-href="#/usuarios/{{ usuario._id }}/posts/{{post._id}}">
+            <a ng-href="#/posts/{{post._id}}">
                 <div class="row post-item">
                     <div class="col-sm-8">
                         {{ post.titulo }}
@@ -13,5 +26,24 @@
                 </div>
             </a>
         </div>
+    </div>
+    <div class="panel-footer">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    <a ng-disabled="paginaAtual<=1" ng-click="carregarPagina(paginaAtual-1)" aria-label="Anterior">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li ng-repeat="p in montarPaginas(totalPaginas) track by $index" ng-class="{active: $index+1==paginaAtual}">
+                    <a ng-click="carregarPagina($index+1)">{{$index+1}}</a>
+                </li>
+                <li>
+                    <a ng-disabled="paginaAtual>=totalPaginas" ng-click="carregarPagina(paginaAtual+1)" aria-label="Próximo">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
