@@ -3,6 +3,10 @@ angular.module('blogjs.post').factory('posts', function($http) {
         return $http.post('http://localhost:9000/v1/usuarios/' + usuarioId + '/posts/', post);
     };
 
+    var atualizar = function(usuarioId, postId, post) {
+        return $http.put('http://localhost:9000/v1/usuarios/' + usuarioId + '/posts/' + postId, post);
+    };
+
     var buscarPorUsuario = function(usuarioId, postId) {
         return $http.get('http://localhost:9000/v1/usuarios/' + usuarioId + '/posts/' + postId);
     };
@@ -34,6 +38,7 @@ angular.module('blogjs.post').factory('posts', function($http) {
 
     return {
         registrar:registrar,
+        atualizar:atualizar,
         listarPorUsuario:listarPorUsuario,
         buscarPorUsuario:buscarPorUsuario,
         buscarPorId:buscarPorId,
