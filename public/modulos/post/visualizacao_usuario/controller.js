@@ -41,5 +41,8 @@ angular.module('blogjs.post').controller('VisualizacaoUsuarioPostController', fu
     $scope.habilitarEdicao = habilitarEdicao;
     $scope.cancelarEdicao = cancelarEdicao;
     $scope.postEditado = {};
-    carregarPosts();
+
+    $scope.init = function() {
+        carregarPosts();
+    };
 });

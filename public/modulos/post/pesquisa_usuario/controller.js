@@ -20,6 +20,8 @@ angular.module('blogjs.post').controller('PesquisaUsuarioPostController', functi
             });
     };
 
-    carregarPosts();
-    carregarUsuario();
+    $scope.init = function() {
+        carregarPosts();
+        carregarUsuario();
+    };
 });

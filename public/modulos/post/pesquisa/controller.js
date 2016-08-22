@@ -30,5 +30,7 @@ angular.module('blogjs.post').controller('PesquisaPostController', function($sco
         }
     };
 
-    carregarPosts();
+    $scope.init = function() {
+        carregarPosts();
+    };
 });

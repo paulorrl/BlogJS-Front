@@ -1,22 +1,22 @@
-angular.module('blogjs.post').factory('posts', function($http) {
+angular.module('blogjs.post').factory('posts', function($http, urlApi) {
     var registrar = function(post, usuarioId) {
-        return $http.post('http://localhost:9000/v1/usuarios/' + usuarioId + '/posts/', post);
+        return $http.post(urlApi + '/v1/usuarios/' + usuarioId + '/posts/', post);
     };
 
     var atualizar = function(usuarioId, postId, post) {
-        return $http.put('http://localhost:9000/v1/usuarios/' + usuarioId + '/posts/' + postId, post);
+        return $http.put(urlApi + '/v1/usuarios/' + usuarioId + '/posts/' + postId, post);
     };
 
     var buscarPorUsuario = function(usuarioId, postId) {
-        return $http.get('http://localhost:9000/v1/usuarios/' + usuarioId + '/posts/' + postId);
+        return $http.get(urlApi + '/v1/usuarios/' + usuarioId + '/posts/' + postId);
     };
 
     var buscarPorId = function(postId) {
-        return $http.get('http://localhost:9000/v1/posts/' + postId);
+        return $http.get(urlApi + '/v1/posts/' + postId);
     };
 
     var listarPorUsuario = function(usuarioId) {
-        return $http.get('http://localhost:9000/v1/usuarios/' + usuarioId + '/posts');
+        return $http.get(urlApi + '/v1/usuarios/' + usuarioId + '/posts');
     };
 
     var listarTodos = function(titulo, pagina) {
@@ -24,16 +24,16 @@ angular.module('blogjs.post').factory('posts', function($http) {
         var url;
 
         if (titulo) {
-            url = 'http://localhost:9000/v1/posts/?pagina=' + page + '&titulo=' + titulo;
+            url = urlApi + '/v1/posts/?pagina=' + page + '&titulo=' + titulo;
         } else {
-            url = 'http://localhost:9000/v1/posts/?pagina=' + page;
+            url = urlApi + '/v1/posts/?pagina=' + page;
         }
 
         return $http.get(url);
     };
 
     var comentar = function(postId, comentario) {
-        return $http.post('http://localhost:9000/v1/posts/' + postId + '/comentarios', comentario)
+        return $http.post(urlApi + '/v1/posts/' + postId + '/comentarios', comentario)
     };
 
     return {

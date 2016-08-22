@@ -1,5 +1,7 @@
 var dependencias = ['textAngular', 'ngSanitize'];
-angular.module('blogjs.post', dependencias)
+
+angular
+    .module('blogjs.post', dependencias)
     .config(function($routeProvider) {
         $routeProvider
             .when('/posts', {
